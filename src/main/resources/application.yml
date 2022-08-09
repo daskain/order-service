@@ -1,0 +1,10 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    group:
+      id: order-handler
+
+kafka:
+  topic:
+    requestOrder: request_order
+    responseOrder: response_order
