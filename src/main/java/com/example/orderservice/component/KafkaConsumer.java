@@ -1,4 +1,4 @@
-package com.example.orderservice.Component;
+package com.example.orderservice.component;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
