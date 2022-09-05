@@ -1,11 +1,14 @@
 package com.example.orderservice.dto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Map;
 import java.util.UUID;
 
-@Data
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
     private UUID orderId;

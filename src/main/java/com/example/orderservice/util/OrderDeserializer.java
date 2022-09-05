@@ -6,10 +6,11 @@ import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 @Slf4j
-public class OrderRequestDeserializer implements Deserializer<OrderRequestDto> {
+public class OrderDeserializer implements Deserializer<OrderRequestDto> {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -28,7 +29,9 @@ public class OrderRequestDeserializer implements Deserializer<OrderRequestDto> {
             System.out.println("Deserializing...");
             return objectMapper.readValue(new String(data, "UTF-8"), OrderRequestDto.class);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new SerializationException("Error when deserializing byte[] to MessageDto");
+
         }
     }
 

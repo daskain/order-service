@@ -1,6 +1,7 @@
 package com.example.orderservice.component;
 import java.util.concurrent.CountDownLatch;
 
+import com.example.orderservice.dto.OrderRequestDto;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -17,11 +18,11 @@ public class KafkaConsumer {
 
     private String payload;
 
-//    @KafkaListener(topics = "${kafka.topic.requestOrder}")
-    public void listen(String consumerRecord) {
+    @KafkaListener(topics = "${kafka.topic.requestOrder}")
+    public void listen(OrderRequestDto consumerRecord) {
         LOGGER.info("received payload='{}'", consumerRecord);
 
-        payload = consumerRecord;
+        payload = consumerRecord.toString();
         latch.countDown();
     }
 
