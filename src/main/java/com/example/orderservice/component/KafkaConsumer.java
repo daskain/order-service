@@ -17,11 +17,11 @@ public class KafkaConsumer {
 
     private String payload;
 
-    @KafkaListener(topics = "${kafka.topic.responseOrder}")
-    public void receive(ConsumerRecord<?, ?> consumerRecord) {
-        LOGGER.info("received payload='{}'", consumerRecord.toString());
+//    @KafkaListener(topics = "${kafka.topic.requestOrder}")
+    public void listen(String consumerRecord) {
+        LOGGER.info("received payload='{}'", consumerRecord);
 
-        payload = consumerRecord.toString();
+        payload = consumerRecord;
         latch.countDown();
     }
 
